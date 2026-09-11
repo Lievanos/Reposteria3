@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repostería Susy – Pasteles Artesanales en Zacapu, Michoacán</title>
+<meta name="description" content="Pasteles caseros y postres artesanales hechos en Zacapu, Michoacán. Vainilla, chocolate, red velvet y más. Cotiza y pide tu pastel por WhatsApp.">
+<meta name="theme-color" content="#3A2317">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Repostería Susy – Delicias Caseras en Zacapu">
+<meta property="og:description" content="Pasteles y postres artesanales para tus celebraciones. Pide el tuyo por WhatsApp.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A2317'/%3E%3Cpath d='M16 40h32v6a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4v-6z' fill='%23FAF3E8'/%3E%3Cpath d='M14 30h36l-3 10H17l-3-10z' fill='%23C1577A'/%3E%3Ccircle cx='32' cy='18' r='6' fill='%23D6A24E'/%3E%3Crect x='30' y='10' width='4' height='8' rx='2' fill='%239C3F5E'/%3E%3C/svg%3E" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Repostería Susy",
+  "image": "",
+  "telephone": "+524361212386",
+  "email": "susanagonzalezgutierrez79@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Morelos #76, San Antonio Tariacuri",
+    "addressLocality": "Zacapu",
+    "addressRegion": "Michoacán",
+    "addressCountry": "MX"
+  },
+  "servesCuisine": "Repostería",
+  "priceRange": "$150 - $650"
+}
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #FAF3E8;
+    --bg-alt: #F1E1C9;
+    --ink: #3A2317;
+    --ink-soft: #6B5142;
+    --primary: #C1577A;
+    --primary-dark: #9C3F5E;
+    --accent: #D6A24E;
+    --card: #FFFDF8;
+    --line: rgba(58,35,23,0.16);
+    --whatsapp: #25D366;
+    --radius-card: 6px;
+    --max: 1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Figtree', sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  h1{font-size:clamp(2.4rem, 5vw, 3.6rem); font-weight:600;}
+  h2{font-size:clamp(1.8rem, 3.4vw, 2.4rem);}
+  h3{font-size:1.15rem; font-weight:600;}
+  p{margin:0 0 1em; color:var(--ink-soft); max-width:60ch;}
+  a{color:inherit;}
+  ul{margin:0; padding:0; list-style:none;}
+  img,svg{max-width:100%; display:block;}
+  section{padding:5rem 1.5rem;}
+  .wrap{max-width:var(--max); margin:0 auto;}
+  :focus-visible{outline:3px solid var(--primary-dark); outline-offset:3px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.55em;
+    padding:.85em 1.6em;
+    border-radius:100px;
+    font-weight:600;
+    font-size:1rem;
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    font-family:'Figtree', sans-serif;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{background:var(--primary-dark);}
+  .btn-outline{background:transparent; border-color:var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--bg);}
+  .btn-whatsapp{background:var(--whatsapp); color:#fff;}
+  .btn-whatsapp:hover{background:#1ea952;}
+  .btn[disabled]{opacity:.5; cursor:not-allowed; transform:none;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(250,243,232,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:var(--max); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.5rem;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem;
+    text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:.5em;
+  }
+  .logo svg{width:30px; height:30px;}
+  .nav-links{display:flex; gap:2rem; align-items:center;}
+  .nav-links a{text-decoration:none; font-weight:500; color:var(--ink-soft); font-size:.98rem;}
+  .nav-links a:hover{color:var(--primary-dark);}
+  .nav-cta{display:none;}
+  @media(min-width:860px){.nav-cta{display:inline-flex;}}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+  @media(max-width:859px){
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; background:var(--bg); padding:1.5rem;
+      border-bottom:1px solid var(--line); gap:1.2rem;
+    }
+    .nav-links.open{display:flex;}
+    .menu-toggle{display:block;}
+  }
+
+  /* Hero */
+  .hero{
+    padding:4.5rem 1.5rem 0;
+    background:var(--bg);
+  }
+  .hero .wrap{
+    display:grid; gap:2.5rem;
+    grid-template-columns:1fr;
+    align-items:center;
+    padding-bottom:4rem;
+  }
+  @media(min-width:900px){
+    .hero .wrap{grid-template-columns:1.1fr .9fr; gap:3rem;}
+  }
+  .eyebrow{
+    color:var(--primary-dark); font-weight:600; margin-bottom:1rem; display:block; font-size:.95rem;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.8rem;}
+  .hero-note{margin-top:1.2rem; font-size:.92rem; color:var(--ink-soft);}
+
+  .scallop{
+    height:22px; background:var(--bg);
+  }
+  .scallop::after{
+    content:""; display:block; height:22px;
+    background:radial-gradient(circle at 11px 0, var(--bg-alt) 11px, transparent 12px) 0 0/22px 22px repeat-x;
+  }
+  .scallop.flip{transform:scaleY(-1);}
+
+  /* Nosotros */
+  .about{background:var(--bg-alt);}
+  .about .wrap{display:flex; justify-content:center;}
+  .about-content{max-width:640px; text-align:center;}
+  .about-content p{margin-left:auto; margin-right:auto;}
+  .ornament{
+    display:inline-block; width:64px; height:14px; margin-bottom:1.5rem;
+    background:
+      radial-gradient(circle, var(--primary) 3px, transparent 3.5px) 0 50%/16px 100% no-repeat,
+      radial-gradient(circle, var(--accent) 3px, transparent 3.5px) 50% 50%/16px 100% no-repeat,
+      radial-gradient(circle, var(--primary) 3px, transparent 3.5px) 100% 50%/16px 100% no-repeat;
+    position:relative;
+  }
+  .ornament::before,.ornament::after{
+    content:""; position:absolute; top:50%; height:1.5px; width:14px;
+    background:var(--ink); opacity:.4;
+  }
+  .ornament::before{left:0;}
+  .ornament::after{right:0;}
+
+  /* Menu */
+  .menu-groups{
+    display:grid; gap:2.5rem; grid-template-columns:1fr;
+  }
+  @media(min-width:760px){.menu-groups{grid-template-columns:1fr 1fr;}}
+  .menu-group h3{
+    border-bottom:2px solid var(--ink); padding-bottom:.5rem; margin-bottom:1rem;
+  }
+  .menu-item{
+    display:flex; align-items:baseline; gap:.4em;
+    padding:.55rem 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .menu-item .name{font-weight:500;}
+  .menu-item .leader{flex:1; border-bottom:1px dotted var(--line); transform:translateY(-3px);}
+  .menu-item .price{font-family:'Fraunces', serif; font-weight:600; color:var(--primary-dark); white-space:nowrap;}
+
+  .flavors{
+    margin-top:3.5rem;
+  }
+  .flavor-list{display:flex; flex-wrap:wrap; gap:.8rem;}
+  .flavor-pill{
+    display:flex; align-items:center; gap:.55em;
+    background:var(--card); border:1px solid var(--line);
+    border-radius:100px; padding:.5em 1.1em .5em .6em;
+    font-size:.95rem; font-weight:500;
+  }
+  .swatch{width:20px; height:20px; border-radius:50%; flex-shrink:0; border:1px solid rgba(0,0,0,.08);}
+
+  /* Order form */
+  .order{background:var(--bg-alt);}
+  .order-grid{
+    display:grid; gap:2.5rem; grid-template-columns:1fr;
+  }
+  @media(min-width:900px){.order-grid{grid-template-columns:1.3fr .9fr; align-items:start;}}
+  form{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius-card);
+    padding:2rem;
+  }
+  .field{margin-bottom:1.3rem;}
+  label{display:block; font-weight:600; margin-bottom:.4em; font-size:.95rem;}
+  .req{color:var(--primary-dark);}
+  input,select,textarea{
+    width:100%; padding:.75em .9em; font-size:1rem;
+    border:1.5px solid var(--line); border-radius:4px;
+    background:#fff; color:var(--ink); font-family:inherit;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--primary);}
+  textarea{resize:vertical; min-height:90px;}
+  .field-error{color:var(--primary-dark); font-size:.85rem; margin-top:.35em; display:none;}
+  .field.invalid input,.field.invalid select{border-color:var(--primary-dark);}
+  .field.invalid .field-error{display:block;}
+  .two-col{display:grid; gap:1.3rem; grid-template-columns:1fr;}
+  @media(min-width:560px){.two-col{grid-template-columns:1fr 1fr;}}
+
+  .summary{
+    position:static; background:var(--ink); color:var(--bg);
+    border-radius:var(--radius-card); padding:2rem;
+  }
+  @media(min-width:900px){.summary{position:sticky; top:6.5rem;}}
+  .summary h3{color:var(--bg);}
+  .summary-row{display:flex; justify-content:space-between; padding:.6rem 0; border-bottom:1px solid rgba(250,243,232,.18); font-size:.95rem;}
+  .summary-row span:first-child{color:rgba(250,243,232,.7);}
+  .summary-total{display:flex; justify-content:space-between; padding-top:1rem; font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600;}
+  .summary .btn{width:100%; justify-content:center; margin-top:1.2rem;}
+  .summary-hint{font-size:.85rem; color:rgba(250,243,232,.65); margin-top:.8rem;}
+
+  /* Contacto */
+  .contact-grid{
+    display:grid; gap:2rem; grid-template-columns:1fr;
+  }
+  @media(min-width:760px){.contact-grid{grid-template-columns:repeat(3,1fr);}}
+  .contact-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius-card);
+    padding:1.8rem;
+  }
+  .contact-card svg{width:26px; height:26px; margin-bottom:.8rem; color:var(--primary-dark);}
+  .contact-card a{text-decoration:none; font-weight:600; color:var(--primary-dark);}
+
+  footer{
+    background:var(--ink); color:var(--bg-alt); padding:2.5rem 1.5rem 2rem;
+  }
+  .footer-wrap{max-width:var(--max); margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:1.5rem; align-items:center;}
+  footer a{color:var(--bg-alt); text-decoration:none;}
+  footer a:hover{color:#fff;}
+  .footer-links{display:flex; gap:1.5rem; flex-wrap:wrap; font-size:.9rem;}
+  .footer-copy{font-size:.85rem; color:rgba(250,243,232,.55); width:100%; margin-top:1.5rem; border-top:1px solid rgba(250,243,232,.15); padding-top:1.2rem;}
+
+  .fab-whatsapp{
+    position:fixed; bottom:1.4rem; right:1.4rem; z-index:50;
+    width:58px; height:58px; border-radius:50%;
+    background:var(--whatsapp); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    text-decoration:none;
+  }
+  .fab-whatsapp svg{width:28px; height:28px;}
+
+  .toast{
+    position:fixed; inset:0; background:rgba(58,35,23,.55);
+    display:none; align-items:center; justify-content:center; z-index:60; padding:1.5rem;
+  }
+  .toast.open{display:flex;}
+  .toast-card{
+    background:var(--card); border-radius:var(--radius-card); padding:2.2rem; max-width:420px; text-align:center;
+  }
+  .toast-card h3{margin-bottom:.6rem;}
+  .toast-card .btn{margin-top:1.3rem; width:100%; justify-content:center;}
+  .toast-close{margin-top:.8rem; background:none; border:none; text-decoration:underline; cursor:pointer; color:var(--ink-soft); font-size:.9rem;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="logo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#3A2317"/><path d="M16 40h32v6a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4v-6z" fill="#FAF3E8"/><path d="M14 30h36l-3 10H17l-3-10z" fill="#C1577A"/><circle cx="32" cy="18" r="6" fill="#D6A24E"/><rect x="30" y="10" width="4" height="8" rx="2" fill="#9C3F5E"/></svg>
+      Repostería Susy
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" id="menuToggle">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#menu">Menú</a>
+      <a href="#pedidos">Pedidos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#pedidos" class="btn btn-primary nav-cta">Hacer pedido</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Repostería casera en Zacapu, Michoacán</span>
+        <h1>Pasteles hechos a mano para tus días más dulces</h1>
+        <p>Horneamos cada pastel con recetas de familia e ingredientes frescos, listos para bodas, cumpleaños y esas celebraciones que merecen algo hecho con cariño.</p>
+        <div class="hero-actions">
+          <a href="#pedidos" class="btn btn-primary">Cotizar mi pastel</a>
+          <a href="#menu" class="btn btn-outline">Ver el menú</a>
+        </div>
+        <p class="hero-note">📍 Av. Morelos #76, San Antonio Tariacuri</p>
+      </div>
+      <div aria-hidden="true">
+        <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="210" cy="345" rx="150" ry="18" fill="#3A2317" opacity="0.08"/>
+          <rect x="90" y="230" width="240" height="90" rx="8" fill="#C1577A"/>
+          <rect x="90" y="230" width="240" height="18" fill="#E9A6BC"/>
+          <rect x="120" y="150" width="180" height="85" rx="8" fill="#D6A24E"/>
+          <rect x="120" y="150" width="180" height="16" fill="#EBC178"/>
+          <rect x="150" y="80" width="120" height="75" rx="8" fill="#9C3F5E"/>
+          <rect x="150" y="80" width="120" height="14" fill="#C1577A"/>
+          <g fill="#FAF3E8">
+            <circle cx="130" cy="270" r="5"/><circle cx="160" cy="285" r="5"/><circle cx="200" cy="265" r="5"/>
+            <circle cx="250" cy="280" r="5"/><circle cx="290" cy="265" r="5"/>
+            <circle cx="150" cy="190" r="5"/><circle cx="200" cy="205" r="5"/><circle cx="260" cy="190" r="5"/>
+          </g>
+          <circle cx="210" cy="60" r="10" fill="#E76F51" opacity="0"/>
+          <rect x="204" y="45" width="12" height="35" rx="4" fill="#F6E7D0"/>
+          <path d="M210 20c6 8 6 14 0 22-6-8-6-14 0-22z" fill="#D6A24E"/>
+        </svg>
+      </div>
+    </div>
+    <div class="scallop" aria-hidden="true"></div>
+  </section>
+
+  <section class="about" id="nosotros">
+    <div class="wrap">
+      <div class="about-content">
+        <span class="ornament" aria-hidden="true"></span>
+        <h2>Nuestra historia empieza en casa</h2>
+        <p>En Repostería Susy creamos pasteles y postres que no solo deleitan el paladar, sino que acompañan los momentos que más importan. Usamos ingredientes frescos y recetas caseras que hemos perfeccionado durante años, pensadas para que cada bocado se sienta como una celebración.</p>
+        <p>Hemos endulzado los momentos especiales de familias y amigos a lo largo del tiempo, y ahora queremos compartir esa pasión contigo. Gracias por dejarnos ser parte de tu historia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>Nuestro menú de pasteles</h2>
+      <p>Precios en pesos mexicanos. Todos nuestros pasteles se preparan por encargo.</p>
+
+      <div class="menu-groups">
+        <div class="menu-group">
+          <h3>Pasteles redondos</h3>
+          <div class="menu-item"><span class="name">12 rebanadas</span><span class="leader"></span><span class="price">$230</span></div>
+          <div class="menu-item"><span class="name">16 rebanadas</span><span class="leader"></span><span class="price">$270</span></div>
+          <div class="menu-item"><span class="name">35–40 rebanadas</span><span class="leader"></span><span class="price">$400</span></div>
+          <div class="menu-item"><span class="name">45–50 rebanadas</span><span class="leader"></span><span class="price">$480</span></div>
+          <div class="menu-item"><span class="name">70 rebanadas</span><span class="leader"></span><span class="price">$650</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Cuadrados y rectangulares</h3>
+          <div class="menu-item"><span class="name">Cuadrado 25–30 rebanadas</span><span class="leader"></span><span class="price">$360</span></div>
+          <div class="menu-item"><span class="name">Cuadrado 45–50 rebanadas</span><span class="leader"></span><span class="price">$480</span></div>
+          <div class="menu-item"><span class="name">Rectangular 45–50 rebanadas</span><span class="leader"></span><span class="price">$480</span></div>
+          <h3 style="margin-top:1.8rem;">Otras delicias</h3>
+          <div class="menu-item"><span class="name">Flan</span><span class="leader"></span><span class="price">$150</span></div>
+          <div class="menu-item"><span class="name">Chocoflan</span><span class="leader"></span><span class="price">$300</span></div>
+        </div>
+      </div>
+
+      <div class="flavors">
+        <h3>Sabores disponibles</h3>
+        <div class="flavor-list">
+          <span class="flavor-pill"><span class="swatch" style="background:#F3E5C0"></span>Vainilla</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#5C3A21"></span>Chocolate</span>
+          <span class="flavor-pill"><span class="swatch" style="background:linear-gradient(135deg,#5C3A21 50%,#F3E5C0 50%)"></span>Marmoleado</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#6F4436"></span>Café</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#A9784F"></span>Nuez</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#E8863A"></span>Naranja</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#B98655"></span>Integral</span>
+          <span class="flavor-pill"><span class="swatch" style="background:#9B1B30"></span>Red Velvet (Rojo)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="order" id="pedidos">
+    <div class="wrap">
+      <h2>Haz tu pedido</h2>
+      <p>Completa el formulario y te enviaremos el resumen directo a nuestro WhatsApp para confirmar contigo.</p>
+
+      <div class="order-grid">
+        <form id="orderForm" novalidate>
+          <div class="field">
+            <label for="cakeType">Tipo de pastel <span class="req">*</span></label>
+            <select id="cakeType" name="cakeType" required>
+              <option value="" data-price="0">Selecciona un tipo</option>
+              <option value="Redondo 12 rebanadas" data-price="230">Redondo 12 rebanadas — $230</option>
+              <option value="Redondo 16 rebanadas" data-price="270">Redondo 16 rebanadas — $270</option>
+              <option value="Redondo 35-40 rebanadas" data-price="400">Redondo 35–40 rebanadas — $400</option>
+              <option value="Redondo 45-50 rebanadas" data-price="480">Redondo 45–50 rebanadas — $480</option>
+              <option value="Redondo 70 rebanadas" data-price="650">Redondo 70 rebanadas — $650</option>
+              <option value="Cuadrado 25-30 rebanadas" data-price="360">Cuadrado 25–30 rebanadas — $360</option>
+              <option value="Cuadrado 45-50 rebanadas" data-price="480">Cuadrado 45–50 rebanadas — $480</option>
+              <option value="Rectangular 45-50 rebanadas" data-price="480">Rectangular 45–50 rebanadas — $480</option>
+              <option value="Flan" data-price="150">Flan — $150</option>
+              <option value="Chocoflan" data-price="300">Chocoflan — $300</option>
+            </select>
+            <p class="field-error">Selecciona un tipo de pastel.</p>
+          </div>
+
+          <div class="field">
+            <label for="flavor">Sabor <span class="req">*</span></label>
+            <select id="flavor" name="flavor" required>
+              <option value="">Selecciona un sabor</option>
+              <option>Vainilla</option>
+              <option>Chocolate</option>
+              <option>Marmoleado</option>
+              <option>Café</option>
+              <option>Nuez</option>
+              <option>Naranja</option>
+              <option>Integral</option>
+              <option>Red Velvet (Rojo)</option>
+            </select>
+            <p class="field-error">Selecciona un sabor.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="field">
+              <label for="name">Tu nombre <span class="req">*</span></label>
+              <input type="text" id="name" name="name" required minlength="2">
+              <p class="field-error">Escribe tu nombre.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Teléfono <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" required pattern="[0-9 +()-]{10,}" placeholder="436 123 4567">
+              <p class="field-error">Escribe un teléfono válido (mínimo 10 dígitos).</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email (opcional)</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <div class="field">
+            <label for="notes">Instrucciones especiales (opcional)</label>
+            <textarea id="notes" name="notes" placeholder="Ej. dedicatoria, fecha de entrega, decoración..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Confirmar pedido</button>
+        </form>
+
+        <aside class="summary" aria-live="polite">
+          <h3>Resumen de tu pedido</h3>
+          <div class="summary-row"><span>Pastel</span><span id="sumCake">—</span></div>
+          <div class="summary-row"><span>Sabor</span><span id="sumFlavor">—</span></div>
+          <div class="summary-total"><span>Total estimado</span><span id="sumPrice">$0</span></div>
+          <a href="#" class="btn btn-whatsapp" id="waPreview" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <p class="summary-hint">El precio es un estimado. Confirmaremos el total contigo por WhatsApp, sobre todo si pides decoración especial.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <h2>Contáctanos</h2>
+      <p>¿Tienes alguna pregunta o necesitas un pastel personalizado? Escríbenos, con gusto te ayudamos.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <h3>Dirección</h3>
+          <p>Av. Morelos #76, San Antonio Tariacuri, Zacapu, Michoacán</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Morelos+76+San+Antonio+Tariacuri+Zacapu+Michoacan" target="_blank" rel="noopener">Cómo llegar →</a>
+        </div>
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 5c0-1 1-2 2-2h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3c0 1-1 2-2 2C9 20 3 14 3 5z"/></svg>
+          <h3>Teléfono</h3>
+          <p><a href="tel:+524361212386">+52 436 121 2386</a></p>
+          <a href="https://wa.me/524361212386" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+        </div>
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <h3>Email</h3>
+          <p><a href="mailto:susanagonzalezgutierrez79@gmail.com">susanagonzalezgutierrez79@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<a class="fab-whatsapp" href="https://wa.me/524361212386?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20un%20pastel" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.9 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.5.3.7.9 2.2 1 2.4.1.2.1.4 0 .6-.3.6-.6.8-.9 1.2-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.3-.3.7-.9 1.1-1.4.3-.4.6-.4 1-.3.4.2 2.2 1 2.6 1.2.4.2.6.3.7.5.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<div class="toast" id="toast">
+  <div class="toast-card">
+    <h3>¡Pedido listo para enviar!</h3>
+    <p id="toastText">Revisa el resumen y confirma por WhatsApp.</p>
+    <a href="#" class="btn btn-whatsapp" id="toastWaLink" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    <br>
+    <button class="toast-close" id="toastClose" type="button">Cerrar</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-wrap">
+    <span>Repostería Susy</span>
+    <div class="footer-links">
+      <a href="tel:+524361212386">+52 436 121 2386</a>
+      <a href="mailto:susanagonzalezgutierrez79@gmail.com">Email</a>
+      <a href="https://wa.me/524361212386" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> Repostería Susy. Hecho con cariño para tus momentos especiales.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const cakeSel = document.getElementById('cakeType');
+  const flavorSel = document.getElementById('flavor');
+  const sumCake = document.getElementById('sumCake');
+  const sumFlavor = document.getElementById('sumFlavor');
+  const sumPrice = document.getElementById('sumPrice');
+  const waPreview = document.getElementById('waPreview');
+  const phone = '524361212386';
+
+  function currentPrice(){
+    const opt = cakeSel.options[cakeSel.selectedIndex];
+    return opt ? Number(opt.dataset.price || 0) : 0;
+  }
+
+  function buildMessage(){
+    const name = document.getElementById('name').value.trim();
+    const tel = document.getElementById('phone').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    const cake = cakeSel.value || 'Sin especificar';
+    const flavor = flavorSel.value || 'Sin especificar';
+    const price = currentPrice();
+    let msg = `Hola, quiero hacer un pedido:\n`;
+    msg += `Pastel: ${cake}\n`;
+    msg += `Sabor: ${flavor}\n`;
+    msg += `Precio estimado: $${price}\n`;
+    if(name) msg += `Nombre: ${name}\n`;
+    if(tel) msg += `Teléfono: ${tel}\n`;
+    if(notes) msg += `Instrucciones: ${notes}\n`;
+    return msg;
+  }
+
+  function updateSummary(){
+    sumCake.textContent = cakeSel.value || '—';
+    sumFlavor.textContent = flavorSel.value || '—';
+    sumPrice.textContent = '$' + currentPrice();
+    waPreview.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildMessage())}`;
+  }
+  [cakeSel, flavorSel].forEach(el => el.addEventListener('change', updateSummary));
+  document.getElementById('orderForm').addEventListener('input', updateSummary);
+  updateSummary();
+
+  const form = document.getElementById('orderForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(field => {
+      const wrapper = field.closest('.field');
+      const ok = field.checkValidity();
+      wrapper.classList.toggle('invalid', !ok);
+      if(!ok) valid = false;
+    });
+    if(!valid) return;
+
+    const link = `https://wa.me/${phone}?text=${encodeURIComponent(buildMessage())}`;
+    document.getElementById('toastWaLink').href = link;
+    document.getElementById('toast').classList.add('open');
+  });
+
+  document.getElementById('toastClose').addEventListener('click', () => {
+    document.getElementById('toast').classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
