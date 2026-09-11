@@ -461,6 +461,19 @@
             </div>
           </div>
 
+          <div class="two-col">
+            <div class="field">
+              <label for="deliveryDate">Fecha de entrega <span class="req">*</span></label>
+              <input type="date" id="deliveryDate" name="deliveryDate" required>
+              <p class="field-error">Selecciona la fecha de entrega.</p>
+            </div>
+            <div class="field">
+              <label for="deliveryTime">Hora de entrega <span class="req">*</span></label>
+              <input type="time" id="deliveryTime" name="deliveryTime" required>
+              <p class="field-error">Selecciona la hora de entrega.</p>
+            </div>
+          </div>
+
           <div class="field">
             <label for="email">Email (opcional)</label>
             <input type="email" id="email" name="email">
@@ -468,7 +481,7 @@
 
           <div class="field">
             <label for="notes">Instrucciones especiales (opcional)</label>
-            <textarea id="notes" name="notes" placeholder="Ej. dedicatoria, fecha de entrega, decoración..."></textarea>
+            <textarea id="notes" name="notes" placeholder="Ej. dedicatoria, decoración, festejo..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary">Confirmar pedido</button>
@@ -478,6 +491,7 @@
           <h3>Resumen de tu pedido</h3>
           <div class="summary-row"><span>Pastel</span><span id="sumCake">—</span></div>
           <div class="summary-row"><span>Sabor</span><span id="sumFlavor">—</span></div>
+          <div class="summary-row"><span>Entrega</span><span id="sumDelivery">—</span></div>
           <div class="summary-total"><span>Total estimado</span><span id="sumPrice">$0</span></div>
           <a href="#" class="btn btn-whatsapp" id="waPreview" target="_blank" rel="noopener">Enviar por WhatsApp</a>
           <p class="summary-hint">El precio es un estimado. Confirmaremos el total contigo por WhatsApp, sobre todo si pides decoración especial.</p>
@@ -555,8 +569,11 @@
 
   const cakeSel = document.getElementById('cakeType');
   const flavorSel = document.getElementById('flavor');
+  const dateInput = document.getElementById('deliveryDate');
+  const timeInput = document.getElementById('deliveryTime');
   const sumCake = document.getElementById('sumCake');
   const sumFlavor = document.getElementById('sumFlavor');
+  const sumDelivery = document.getElementById('sumDelivery');
   const sumPrice = document.getElementById('sumPrice');
   const waPreview = document.getElementById('waPreview');
   const phone = '524361212386';
@@ -566,6 +583,29 @@
     return opt ? Number(opt.dataset.price || 0) : 0;
   }
 
+  function formatDeliveryDate(value){
+    if(!value) return '';
+    const [y, m, d] = value.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  function formatDeliveryTime(value){
+    if(!value) return '';
+    const [h, min] = value.split(':').map(Number);
+    const period = h >= 12 ? 'p.m.' : 'a.m.';
+    const hour12 = ((h + 11) % 12) + 1;
+    return `${hour12}:${String(min).padStart(2,'0')} ${period}`;
+  }
+
+  function deliveryLabel(){
+    const d = formatDeliveryDate(dateInput.value);
+    const t = formatDeliveryTime(timeInput.value);
+    if(d && t) return `${d} a las ${t}`;
+    if(d) return d;
+    if(t) return t;
+    return '—';
+  }
+
   function buildMessage(){
     const name = document.getElementById('name').value.trim();
     const tel = document.getElementById('phone').value.trim();
@@ -573,9 +613,11 @@
     const cake = cakeSel.value || 'Sin especificar';
     const flavor = flavorSel.value || 'Sin especificar';
     const price = currentPrice();
+    const delivery = deliveryLabel();
     let msg = `Hola, quiero hacer un pedido:\n`;
     msg += `Pastel: ${cake}\n`;
     msg += `Sabor: ${flavor}\n`;
+    if(delivery !== '—') msg += `Entrega: ${delivery}\n`;
     msg += `Precio estimado: $${price}\n`;
     if(name) msg += `Nombre: ${name}\n`;
     if(tel) msg += `Teléfono: ${tel}\n`;
@@ -586,11 +628,13 @@
   function updateSummary(){
     sumCake.textContent = cakeSel.value || '—';
     sumFlavor.textContent = flavorSel.value || '—';
+    sumDelivery.textContent = deliveryLabel();
     sumPrice.textContent = '$' + currentPrice();
     waPreview.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildMessage())}`;
   }
   [cakeSel, flavorSel].forEach(el => el.addEventListener('change', updateSummary));
   document.getElementById('orderForm').addEventListener('input', updateSummary);
+  dateInput.min = new Date().toISOString().split('T')[0];
   updateSummary();
 
   const form = document.getElementById('orderForm');
