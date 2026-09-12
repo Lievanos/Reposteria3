@@ -6,6 +6,12 @@
 <title>Repostería Susy – Pasteles Artesanales en Zacapu, Michoacán</title>
 <meta name="description" content="Pasteles caseros y postres artesanales hechos en Zacapu, Michoacán. Vainilla, chocolate, red velvet y más. Cotiza y pide tu pastel por WhatsApp.">
 <meta name="theme-color" content="#3A2317">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Susy">
+<link rel="apple-touch-icon" href="icon-192.png">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
@@ -281,6 +287,23 @@
   }
   .fab-whatsapp svg{width:28px; height:28px;}
 
+  .install-banner{
+    position:fixed; left:1rem; right:1rem; bottom:1.4rem; z-index:55;
+    max-width:420px; margin:0 auto;
+    background:var(--ink); color:var(--bg);
+    border-radius:var(--radius-card); padding:1rem 1.2rem;
+    display:none; align-items:center; gap:.9rem;
+    box-shadow:0 10px 28px rgba(0,0,0,.3);
+  }
+  .install-banner.show{display:flex;}
+  .install-banner img{width:38px; height:38px; border-radius:9px; flex-shrink:0;}
+  .install-banner p{margin:0; color:rgba(250,243,232,.85); font-size:.88rem; max-width:none;}
+  .install-banner .btn{flex-shrink:0; padding:.55em 1.1em; font-size:.88rem;}
+  .install-banner .install-close{
+    background:none; border:none; color:rgba(250,243,232,.6); font-size:1.1rem;
+    cursor:pointer; padding:0 .2rem; line-height:1;
+  }
+
   .toast{
     position:fixed; inset:0; background:rgba(58,35,23,.55);
     display:none; align-items:center; justify-content:center; z-index:60; padding:1.5rem;
@@ -526,6 +549,13 @@
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.9 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.5.3.7.9 2.2 1 2.4.1.2.1.4 0 .6-.3.6-.6.8-.9 1.2-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.3-.3.7-.9 1.1-1.4.3-.4.6-.4 1-.3.4.2 2.2 1 2.6 1.2.4.2.6.3.7.5.1.2.1.9-.1 1.6z"/></svg>
 </a>
 
+<div class="install-banner" id="installBanner">
+  <img src="icon-192.png" alt="" aria-hidden="true">
+  <p id="installText">Instala Repostería Susy en tu pantalla de inicio para pedir más rápido.</p>
+  <button class="btn btn-primary" id="installBtn" type="button">Instalar</button>
+  <button class="install-close" id="installClose" type="button" aria-label="Cerrar">✕</button>
+</div>
+
 <div class="toast" id="toast">
   <div class="toast-card">
     <h3>¡Pedido listo para enviar!</h3>
@@ -651,6 +681,54 @@
 
   document.getElementById('toastClose').addEventListener('click', () => {
     document.getElementById('toast').classList.remove('open');
+  });
+
+  // --- PWA: service worker + install banner ---
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  const installBanner = document.getElementById('installBanner');
+  const installBtn = document.getElementById('installBtn');
+  const installClose = document.getElementById('installClose');
+  const installText = document.getElementById('installText');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('installBannerDismissed') === '1';
+  let deferredPrompt = null;
+
+  function hideInstallBanner(){
+    installBanner.classList.remove('show');
+    localStorage.setItem('installBannerDismissed', '1');
+  }
+  installClose.addEventListener('click', hideInstallBanner);
+
+  if(!isStandalone && !dismissed){
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installText.textContent = 'Instala Repostería Susy en tu pantalla de inicio para pedir más rápido.';
+      installBtn.textContent = 'Instalar';
+      installBanner.classList.add('show');
+    });
+
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isSafari = /safari/i.test(navigator.userAgent) && !/crios|fxios/i.test(navigator.userAgent);
+    if(isIOS && isSafari){
+      installText.textContent = 'Para instalar: toca compartir ⬆️ y luego "Agregar a pantalla de inicio".';
+      installBtn.textContent = 'Entendido';
+      setTimeout(() => installBanner.classList.add('show'), 1200);
+    }
+  }
+
+  installBtn.addEventListener('click', async () => {
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+    }
+    hideInstallBanner();
   });
 </script>
 
